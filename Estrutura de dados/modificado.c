@@ -44,6 +44,7 @@ void imprimirVetor (int vetor[], int p, int r){
     for(int i=0;i<r;i++){
         printf("%d ", vetor[i]);
     }
+    printf("\n");
 }
 
 int main(){
@@ -65,12 +66,14 @@ int main(){
     int valorVetorArrumado;
     printf("Verificação se o seu vetor é arrumado\n---------------\n");
     
-    printf("Arrumação vetor ESTATICO\n");
+    printf("Arrumação vetor ESTATICO\nVetor:\n");
+    imprimirVetor(vetor, p, r);
     valorVetorArrumado=valorArrumado(vetor, p, r);
 
 
     printf("\n\n------------\nVetor dinamico arrumado: ");
-
+    imprimirVetor(vet, p, tamanhoVetor);
+    valorArrumado(vet, p, tamanhoVetor);
 
     return 1;
 }
