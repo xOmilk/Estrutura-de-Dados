@@ -45,6 +45,14 @@ Fila *desenfileirar(struct no *topo){
 
 }
 
+void imprimir(Fila *topo){
+    Fila *aux=NULL;
+    for(aux=topo; aux->prox==NULL;aux=aux->prox){
+        printf("Categoria: %d\nOrdem de chegada: %d\nOrdem de atendimeno: %d");
+    }
+
+}
+
 
 
 
