@@ -21,44 +21,40 @@ no lugar das palavras geral e idoso.
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct no{
-  int categoria;
-  int ordemChegada;
-  int qntdPassou;
-  struct no *prox;
-}Fila;
+typedef struct no
+{
+    int categoria;
+    int ordemChegada;
+    int qntdPassou;
+    struct no *prox;
+} Fila;
 
-Fila *enfileirar (struct no *topo, int categoria, int ordemChegada){
-    Fila *novo = (Fila*)malloc(sizeof(Fila));
+Fila *enfileirar(struct no *topo, int categoria, int ordemChegada)
+{
+    Fila *novo = (Fila *)malloc(sizeof(Fila));
     novo->categoria = categoria;
     novo->ordemChegada = ordemChegada;
-    novo->prox=NULL;
+    novo->prox = NULL;
 
-    if(topo==NULL){
-        topo=novo;
+    if (topo == NULL)
+    {
+        topo = novo;
         return;
     }
-
-
 }
-Fila *desenfileirar(struct no *topo){
-
+Fila *desenfileirar(struct no *topo)
+{
 }
 
-void imprimir(Fila *topo){
-    Fila *aux=NULL;
-    for(aux=topo; aux->prox==NULL;aux=aux->prox){
+void imprimir(Fila *topo)
+{
+    Fila *aux = NULL;
+    for (aux = topo; aux->prox == NULL; aux = aux->prox)
+    {
         printf("Categoria: %d\nOrdem de chegada: %d\nOrdem de atendimeno: %d");
     }
-
 }
 
-
-
-
-int main (){
-  
-
+int main()
+{
 }
-
-
