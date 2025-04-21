@@ -19,21 +19,9 @@ typedef struct no
     struct no *ant;
 } Lista;
 
-void trocarElementosLista(struct Lista **Lista1, int elmtEscolhidoPrimeira, struct Lista **Lista2, int elmtEscolhidoSegunda)
-{
-    // Codigo para a troca:
-
-    
-
-
-
-    // Listas apos a troca
-    imprimirLista(Lista1);
-    imprimirLista(Lista2);
-}
-
 void imprimirLista(struct Lista *topo)
 {
+    int contador = 0;
     printf("\n\n#### Impressao da lista ####\n\n");
     for (Lista *aux = topo; aux != NULL; aux->prox = aux)
     {
@@ -42,10 +30,18 @@ void imprimirLista(struct Lista *topo)
     printf("#### Lista finalizada ####\n");
 }
 
+void trocarElementosLista(struct Lista **Lista1, int elmtEscolhidoPrimeira, struct Lista **Lista2, int elmtEscolhidoSegunda)
+{
+    // Codigo para a troca:
+
+    // Listas apos a troca
+    imprimirLista(Lista1);
+    imprimirLista(Lista2);
+}
+
 int escolherElemento(struct Lista *topo)
 {
     int elementoArmazenado;
-    int contador = 0;
     bool achou = false;
 
     imprimirLista(topo);
@@ -124,7 +120,7 @@ void main()
     Lista *l2;
     l2 = coletarDadosLista();
 
-    //Fazer a escolha dos elementos
+    // Fazer a escolha dos elementos
     int elmtEscolhidoPrimeira = escolherElemento(l1);
     int elmtEscolhidoSegunda = escolherElemento(l2);
 
@@ -135,7 +131,7 @@ void main()
         imprimirLista(l1);
         imprimirLista(l2);
 
-        printf("Efetuando troca de elementos");
+        printf("\n\nEfetuando troca de elementos\n");
         trocarElementosLista(l1, elmtEscolhidoPrimeira, l2, elmtEscolhidoSegunda);
     }
     else
