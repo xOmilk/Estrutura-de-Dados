@@ -49,14 +49,37 @@ Lista *inserirNoFinal(struct lista *topo, int valor)
 Lista *coletarDadosLista()
 {
     Lista *l1;
+    int posicao = 0;
+    int respo = 1;
+    printf("\n\n#### Coleta de dados de Lista ####\n\n");
 
+    do
+    {
+        printf("Digite o valor para a posicao [%d]: ", posicao);
+        int conteudo;
+        scanf("%d", &conteudo);
+        inserirNoFinal(l1, conteudo);
 
+        printf("Deseja continuar inserindo elementos");
+        scanf("%d", &respo);
 
-    return;
+    } while (respo != 0);
+
+    return l1;
 }
 
 void main()
 {
+    printf("Coleta de dados da primeira lista");
     Lista *l1;
+    l1 = coletarDadosLista;
+
+
+    printf("Coleta de dados da primeira lista");
     Lista *l2;
+    l2 = coletarDadosLista;
+
+    
+
+
 }
