@@ -74,12 +74,7 @@ void main()
     Lista *l1;
     l1 = coletarDadosLista;
 
-
     printf("Coleta de dados da primeira lista");
     Lista *l2;
     l2 = coletarDadosLista;
-
-    
-
-
 }
