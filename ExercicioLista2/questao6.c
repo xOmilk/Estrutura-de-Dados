@@ -199,7 +199,7 @@ int main()
         printf("5. Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
-        getchar(); // limpar o \n do buffer
+        getchar();
 
         switch (opcao)
         {
