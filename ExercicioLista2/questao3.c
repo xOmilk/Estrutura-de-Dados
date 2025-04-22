@@ -1,3 +1,4 @@
+
 /*
 
 Faça um algoritmo que implemente a função
@@ -13,64 +14,106 @@ inserido.
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+
 typedef struct no
 {
-    int inteiroX;
+    int conteudo;
     struct no *prox;
-    struct no *ant;
 } celula;
+
+void imprimir(celula *lista)
+{
+    if (lista == NULL)
+    {
+        printf("Lista vazia\n");
+        return;
+    }
+
+    for (celula *aux = lista; aux != NULL; aux = aux->prox)
+    {
+        printf(" %d ->", aux->conteudo);
+    }
+
+    printf("\n");
+}
 
 celula *buscarOuInserir(int inteiroX, celula *point)
 {
-    bool achou = false;
-    int posicao = 0;
+    celula *atual = point;
+    celula *anterior = NULL;
 
-    if (point == NULL || (*point == NULL))
+    while (atual != NULL)
     {
-        printf("O ponteiro está vazio ou possui valor vazio");
-        return NULL;
+        if (atual->conteudo == inteiroX)
+        {
+            printf("O valor '%d' foi encontrado na lista.\n", inteiroX);
+            return atual;
+        }
+        anterior = atual;
+        atual = atual->prox;
     }
-    // NÃO ESTA VAZIO
+
+    // não encontrou, inserir no final
+    celula *novo = (celula *)malloc(sizeof(celula));
+    novo->conteudo = inteiroX;
+    novo->prox = NULL;
+
+    if (anterior == NULL)
+    {
+        printf("Lista vazia. Inserindo o valor %d...\n", inteiroX);
+        return novo;
+    }
     else
     {
-        celula *aux;
-        for (aux = point; aux != NULL; aux->prox == aux)
-        {
-            // Buscar o valor dentro da lista
-            if (inteiroX == aux->inteiroX)
-            {
-                printf("O valor '%d' foi encontrado dentro da lista na posição %d.", inteiroX, posicao);
-                achou = true;
-            }
-            posicao++;
-        }
-
-        // SE NÃO ENCONTRAR X -> INSERIR NA ULTIMA POSICAO
-        // AUX JA ESTÁ APONTANDO PRA NULL
-        if (!achou)
-        {
-            celula *novo = (celula *)malloc(sizeof(celula));
-            novo->inteiroX = inteiroX;
-
-            // Atualizando os ponteiros
-            novo->prox = NULL;
-            novo->ant = aux;
-            aux->prox = novo;
-        }
+        // Inserindo no final da lista
+        anterior->prox = novo;
+        printf("Valor %d inserido no final da lista.\n", inteiroX);
+        return novo;
     }
 }
 
 int main()
 {
-
-    celula *lista;
+    celula *lista = NULL;
     int respo;
+    int conteudo;
+
+    printf("\n###\tLista\t###\n\n");
     do
     {
-
-        
-        printf("Deseja continuar inserindo valores?");
+        printf("\nMenu:");
+        printf("\n[0] - Sair");
+        printf("\n[1] - Inserir/Buscar valor");
+        printf("\n[2] - Imprimir lista");
+        printf("\nO que deseja fazer?\nDecisao: ");
         scanf("%d", &respo);
+
+        switch (respo)
+        {
+        case 1:
+            printf("\nInsira um valor: ");
+            scanf("%d", &conteudo);
+
+            if (lista == NULL)
+            {
+                lista = buscarOuInserir(conteudo, lista);
+            }
+            else
+            {
+                buscarOuInserir(conteudo, lista);
+            }
+            break;
+        case 2:
+            imprimir(lista);
+            break;
+        case 0:
+            printf("Saindo...\n");
+            break;
+        default:
+            printf("Opcao invalida.\n");
+            break;
+        }
     } while (respo != 0);
+
+    return 0;
 }
