@@ -12,14 +12,12 @@ de posição.
 #include <stdlib.h>
 #include <stdbool.h>
 
-// Estrutura do nó
 typedef struct no
 {
     int cont;
     struct no *prox;
 } Lista;
 
-// Função para imprimir a lista
 void imprimirLista(Lista *topo)
 {
     int contador = 0;
@@ -32,7 +30,6 @@ void imprimirLista(Lista *topo)
     printf("\n");
 }
 
-// Função para inserir no final da lista
 Lista *inserirNoFinal(Lista *topo, int valor)
 {
     Lista *novo = malloc(sizeof(Lista));
@@ -52,7 +49,6 @@ Lista *inserirNoFinal(Lista *topo, int valor)
     return topo;
 }
 
-// Coletar dados da lista do usuário
 Lista *coletarDadosLista()
 {
     Lista *nova = NULL;
@@ -68,7 +64,7 @@ Lista *coletarDadosLista()
         scanf("%d", &conteudo);
         nova = inserirNoFinal(nova, conteudo);
 
-        printf("Deseja continuar inserindo elementos?\t(0) - Sair\nResposta: ");
+        printf("Deseja continuar inserindo elementos?\t\t(0) - Sair\nResposta: ");
         scanf("%d", &respo);
         posicao++;
 
@@ -90,13 +86,12 @@ void buscarNoEAnterior(Lista *inicio, int cont, Lista **no, Lista **anterior)
     }
 }
 
-// Troca os nós entre listas (sem trocar valores)
+// Troca de nós das listas
 void trocarNosSimples(Lista **topo1, Lista *n1, Lista *n1Ant, Lista **topo2, Lista *n2, Lista *n2Ant)
 {
     if (!n1 || !n2 || n1 == n2)
         return;
 
-    // Ajusta o nó anterior de cada lista
     if (n1Ant)
         n1Ant->prox = n2;
     else
@@ -107,13 +102,12 @@ void trocarNosSimples(Lista **topo1, Lista *n1, Lista *n1Ant, Lista **topo2, Lis
     else
         *topo2 = n1;
 
-    // Troca os próximos dos nós
     Lista *tmp = n1->prox;
     n1->prox = n2->prox;
     n2->prox = tmp;
 }
 
-// Função principal de troca, que localiza e troca
+// Realiza a troca
 void trocarElementosLista(Lista **Lista1, int elmtEscolhidoPrimeira, Lista **Lista2, int elmtEscolhidoSegunda)
 {
     Lista *n1 = NULL, *n1Ant = NULL;
